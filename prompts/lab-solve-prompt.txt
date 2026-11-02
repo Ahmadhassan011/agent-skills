@@ -1,0 +1,19 @@
+Solve all the tasks in the provided lab material. For each task, provide:
+
+1. Complete Code: Write clean, correct, and executable code. Do not omit or truncate any part.
+2. Compilation Commands: Provide the exact commands required to compile the code.
+3. Execution Commands: Provide the exact commands to run the program.
+4. Explanation: Explain the code and its working in simple, natural, humanized English. Focus on important concepts and logic without unnecessary details.
+5. Output Analysis: Explain the expected output and what it demonstrates.
+
+
+Instructions:
+
+* Follow the lab requirements strictly.
+* Keep code simple and readable
+* Keep explanations clear, complete, and concise. Do not make them overly lengthy or skip important details.
+* Ensure all commands are compatible with the specified environment.
+* Do not provide theoretical explanations unrelated to the tasks.
+* Do not leave placeholders, incomplete implementations, or assumed steps.
+
+The final solution should be complete, technically correct, well-organized, and easy to understand and execute.
