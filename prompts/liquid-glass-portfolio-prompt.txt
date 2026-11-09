@@ -1,55 +1,155 @@
-You are an expert Principal UI/UX Designer and Lead Front-End Engineer specializing in luxury, editorial web design and modern front-end architectures. 
+You are an expert Principal UI/UX Designer and Lead Front-End Engineer
+specializing in luxury, editorial web design and modern front-end architectures.
 
-Your task is to build a production-ready, fully responsive developer portfolio website featuring an ultra-luxurious "Liquid Glass" design aesthetic.
+Your task is to build a production-ready, fully responsive developer portfolio
+website with an ultra-luxurious "Liquid Glass" design aesthetic.
 
-### STEP 1: DISCOVERY & INTAKE
+# TECH STACK
+Resolve the stack in this order:
+1. If I provide an existing project or code, match its stack and conventions.
+2. Else, if I state a stack in my reply, use that.
+3. Else, ask me once. If I say "use defaults," choose the simplest stack that
+   satisfies this spec and tell me what you chose.
+
+# STEP 1: DISCOVERY & INTAKE
 Before generating any code, ask me the following questions and wait for my response:
 
-1. **Content & Profile Data**:
+1. **Content & Profile Data**
    - Name & Professional Title
    - Hero Tagline & Brief Bio
    - Social Links (GitHub, LinkedIn, Email, Twitter/X)
-   - Key Projects (Names, descriptions, tech tags, metrics/impact, repository links)
+   - Key Projects (names, descriptions, tech tags, metrics/impact, repository links)
    - Skills Categories (e.g., ML & AI, Backend Systems, Infrastructure, Programming Languages)
-   - Experience & Education (Companies/Institutions, roles, dates, key accomplishments)
+   - Experience & Education (companies/institutions, roles, dates, key accomplishments)
 
-2. **Color Palette & Visual Theme**:
-   - Prefer a **Monochrome Luxury Palette** (True black `#050505`, obsidian glass, icy silver borders, white glows)?
-   - Or a **Custom Brand Accent** (e.g., Emerald, Gold, or Midnight Blue highlights)?
+2. **Color**
+   - Monochrome Luxury Palette (true black #050505, obsidian glass, icy silver
+     borders, white glows)?
+   - Or a Custom Brand Accent (e.g., Emerald, Gold, Midnight Blue)?
 
-3. **Typography Preference**:
-   - Default is **Inter** (clean, modern, high legibility). Keep Inter or swap to another sans-serif/serif font?
+3. **Typography**
+   - Default is Inter. Keep it or swap to another sans-serif/serif font?
 
-*(If I reply with "Use defaults" or ask you to populate it yourself, use realistic, high-impact AI/Systems Software Engineering sample content with a Monochrome Black & Silver theme).*
+4. **Stack** (only if no existing project): any framework, styling approach,
+   or libraries you want me to use?
 
-### STEP 2: TECHNICAL & DESIGN SPECIFICATIONS
-Once content and color preferences are confirmed, write the code code adhering strictly to these requirements:
+If I reply "Use defaults" or ask you to populate it yourself, use realistic,
+high-impact AI/Systems Software Engineering sample content with the Monochrome
+Black & Silver theme, Inter, and the default design and layout below.
 
-#### 1. Visual & Aesthetic Architecture ("Liquid Glass")
-- **Background**: Deep background tint with slow-morphing, floating ambient radial light blobs driven by smooth CSS keyframe animations (`liquid-morph`).
-- **Glassmorphism Panels**: Translucent frosted panels (`backdrop-blur-xl bg-white/[0.02] border border-white/10 shadow-2xl rounded-2xl`).
-- **Typography**: Clean hierarchy using Inter, generous tracking/letter-spacing, and subtle muted text colors (`text-white/60`, `text-white/90`).
-- **Interactive Spotlight**: Vanilla JavaScript(or some library) cursor-tracking effect on glass cards that moves a subtle radial silver glow (`radial-gradient`) behind the cursor.
+---
 
-#### 2. Tech Stack Requirements (this should be taken from the already present stack otherwise this is for the default)
-- **Framework**: Pure HTML5 in a single, standalone `index.html` file.
-- **Styling**: Tailwind CSS (via CDN with custom `@config` script for extended animation utilities).
-- **Motion & Scroll**: Integrated **Lenis** smooth scroll engine.
-- **Scroll Animations**: **GSAP** + **ScrollTrigger** for silky, staggered reveal animations on titles, cards, and section dividers as they enter the viewport.
-- **Icons**: Inline SVG tech icons or feather-icon SVGs.
+# COLOR
+Define the palette as named tokens and nothing else (no sizes, effects, or
+structure). Every other style in the project must reference color only through
+these tokens, never literal values.
 
-#### 3. Required Page Structure & Layout
-- **Dynamic Glass Navbar**: Fixed floating header with backdrop blur, compacting on scroll, featuring an active link indicator and scroll-progress bar at the top edge.
-- **Hero Section**: Minimalist header layout, glowing badge indicator, direct action buttons (Projects, Contact), and ambient background liquid lighting.
-- **About Section**: High-contrast grid featuring key highlights, domain focus, and operational metrics.
-- **Categorized Skills Grid**: 4 domain-specific glass boxes (e.g., *Machine Learning*, *Systems & Backend*) featuring vector tech icons inside hoverable pills.
-- **Projects Showcase**: 
-  - Use a standard, responsive CSS Grid (`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8`). 
-  - Cards must maintain uniform height and structural alignment using `flex flex-col justify-between` and a fixed `aspect-video` ratio for image containers.
-- **Experience & Education**: Vertical timeline or structured glass cards highlighting past roles, achievements, and academic credentials.
-- **Contact & Footer**: Minimalist contact terminal card, quick email copy button, social links, and credit line.
+Required tokens:
+- Backgrounds: --bg, --bg-elevated
+- Glass: --surface (translucent fill), --surface-hover
+- Borders: --border, --border-strong
+- Text: --text-primary, --text-muted
+- Accent: --accent, --accent-glow
+- Ambient light: --blob-1, --blob-2, --blob-3
+- Cursor glow: --spotlight
 
-### STEP 3: CODE OUTPUT RULES
-- Deliver the output in **one complete, functional `index.html` file** with inline `<style>` and `<script>` tags.
-- Do NOT use placeholder text like `"Insert rest of code here"`. Every section must be fully written.
-- Ensure 100% mobile responsiveness, correct overflow prevention (`overflow-x-hidden`), and zero layout shifts.
+Default preset, Monochrome Luxury:
+- Background true black #050505, obsidian glass surfaces
+- Borders icy silver / white at ~10% opacity
+- Primary text white at ~90%, muted text white at ~60%
+- Accent icy silver, glows white
+
+Alternative presets (if I choose a custom accent): Emerald, Gold, or Midnight
+Blue, each keeping the dark base and swapping only accent, glow, and blob tokens.
+
+All text/background pairs must meet WCAG AA contrast. Provide each preset as a
+switchable theme so changing it is a one-line edit.
+
+---
+
+# DESIGN
+Look, feel, typography, and motion. Use color tokens only.
+
+**Background: liquid ambient light**
+- Deep background tint with slow-morphing, floating radial light blobs
+  (animation named `liquid-morph`), 20-30s loops, soft blur ~80-120px, low
+  opacity (~0.15-0.35), colored by the blob tokens.
+
+**Glass panels**
+- Translucent frosted panels: strong backdrop blur (~24px), very low-opacity
+  fill (~2%) from --surface, 1px --border, large soft shadow, rounded
+  corners (~16px).
+- Fallback when backdrop blur is unsupported: opaque --bg-elevated.
+- Limit simultaneously visible blurred surfaces (~6) for performance.
+
+**Typography**
+- Clean hierarchy using Inter (or my chosen font), generous letter-spacing on
+  small labels, tight tracking on large headings, --text-primary for emphasis
+  and --text-muted for secondary text. Fluid hero size (about 44px on mobile
+  up to ~88px on desktop).
+
+**Interactive spotlight**
+- A cursor-tracking effect on glass cards: a subtle radial glow (~300px
+  radius, colored by --spotlight) follows the cursor behind card content.
+- Disabled on touch devices.
+
+**Motion**
+- Smooth, inertial page scrolling.
+- Scroll-triggered staggered reveals on titles, cards, and section dividers:
+  ~24px rise + fade, ~0.8s, ease-out, ~0.08s stagger.
+- Hover transitions 200-300ms with no layout shift.
+- Content must remain visible if animation code fails to load (set hidden
+  start states in script, not in static styles).
+- Respect reduced-motion preferences: disable blobs, smooth scrolling, and
+  reveals.
+
+**Icons**
+- Inline vector icons (tech logos or feather-style line icons); no emoji icons.
+
+---
+
+# LAYOUT
+Structure only: place the glass cards, pills, and other components defined
+in DESIGN without redefining their appearance.
+
+**Global**
+- Mobile-first, fully responsive, no horizontal overflow, zero layout shift
+  (reserve space for images and fonts).
+- Suggested breakpoints: 640 / 768 / 1024 / 1280px; centered container
+  (~1152px max); generous vertical section spacing.
+
+**Sections, in order**
+1. **Navbar**: fixed floating header with glass treatment; compacts on scroll;
+   active-link indicator; scroll-progress bar at the top edge; collapses to a
+   menu on small screens; anchor links account for the navbar's height.
+2. **Hero**: minimalist layout, glowing badge indicator, two action buttons
+   (Projects, Contact), ambient liquid lighting behind.
+3. **About**: high-contrast grid of key highlights, domain focus, and
+   operational metrics (2 columns on mobile, 4 on desktop).
+4. **Skills**: 4 domain-specific glass boxes (e.g., Machine Learning,
+   Systems & Backend), each holding hoverable pill items with vector icons
+   (1 column mobile, 2 on tablet and up).
+5. **Projects**: responsive grid of 1 / 2 / 3 columns (mobile / md / lg) with
+   a gap of ~32px. Cards are uniform height with the same structure: a fixed
+   16:9 image area, content block, and tags/links pinned to the bottom.
+6. **Experience & Education**: vertical timeline or structured glass cards for
+   roles, achievements, and academic credentials.
+7. **Contact & Footer**: minimalist terminal-style contact card, quick
+   email-copy button, social links, credit line.
+
+**Structure and accessibility**
+- Semantic landmarks, skip link, visible focus states, labels on icon-only
+  buttons.
+
+---
+
+# STEP 3: OUTPUT RULES
+- Deliver complete, functional code. Do NOT use placeholders like
+  "Insert rest of code here"; every section must be fully written.
+- Keep color, design, layout, and content in separately labeled blocks or
+  files, following the stack's conventions.
+- Before delivering, verify: nav links match section IDs, no literal color
+  values outside the color tokens, no console errors, no horizontal scroll at
+  any width.
+- After the code, give a brief guide: where to edit content, and how to swap
+  color, design, and layout.
